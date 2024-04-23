@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>RadioList_v._1._0</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>hnet.com-image.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\Add_16x.png" />
+    <None Remove="Resources\Icons\CleanData_16x.png" />
+    <None Remove="Resources\Icons\DeleteTableRow_16x.png" />
+    <None Remove="Resources\Icons\Restart_16x.png" />
+    <None Remove="Resources\Icons\StartWithoutDebug_16x.png" />
+    <None Remove="Resources\Icons\Stop_16x.png" />
+    <None Remove="Resources\Icons\UpdateListItem_16x.png" />
+    <None Remove="Resources\Icons\VBSearch_16x.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Add_16x.png" />
+    <Resource Include="Resources\Icons\CleanData_16x.png" />
+    <Resource Include="Resources\Icons\DeleteTableRow_16x.png" />
+    <Resource Include="Resources\Icons\Restart_16x.png" />
+    <Resource Include="Resources\Icons\StartWithoutDebug_16x.png" />
+    <Resource Include="Resources\Icons\Stop_16x.png" />
+    <Resource Include="Resources\Icons\UpdateListItem_16x.png" />
+    <Resource Include="Resources\Icons\VBSearch_16x.png" />
+  </ItemGroup>
+
+</Project>

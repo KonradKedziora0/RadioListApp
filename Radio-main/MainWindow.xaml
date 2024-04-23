@@ -1,0 +1,117 @@
+﻿<Window x:Class="RadioList_v._1._0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RadioList_v._1._0"
+        mc:Ignorable="d"
+        Title="RadioList" Height="470" Width="800" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+    <!--Gridview with data-->
+    <Grid>
+        <ListView x:Name="stationListView" Margin="0,10,0,186" RenderTransformOrigin="0.506,0.418" HorizontalAlignment="Center" Width="782" IsSynchronizedWithCurrentItem="False"   GridViewColumnHeader.Click="gridViewColumnHeaderClickedHandler">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="140" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Country" Width="140" DisplayMemberBinding="{Binding Country}"/>
+                    <GridViewColumn Header="Description" Width="140" DisplayMemberBinding="{Binding Description}"/>
+                    <GridViewColumn Header="URL" Width="335" DisplayMemberBinding="{Binding Url}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!--Textboxes to data-->
+        <TextBox x:Name="stationNameTextBox" Text="{Binding ElementName=stationListView, Path=SelectedItem.Name, Mode=TwoWay}" HorizontalAlignment="Left" Margin="101,258,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Width="60" FontWeight="Bold" FontSize="12"/>
+
+        <TextBox x:Name="stationCountryTextBox" Text="{Binding ElementName=stationListView, Path=SelectedItem.Country,Mode=TwoWay}" HorizontalAlignment="Left" Margin="101,291,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+        <Label Content="Country" HorizontalAlignment="Left" Margin="10,288,0,0" VerticalAlignment="Top" Width="67" FontWeight="Bold" FontSize="12"/>
+
+        <TextBox x:Name="stationUrlTextBox" Text="{Binding ElementName=stationListView, Path=SelectedItem.Url, Mode=TwoWay}" HorizontalAlignment="Left" Margin="101,322,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26"/>
+        <Label Content="URL" HorizontalAlignment="Left" Margin="10,322,0,0" VerticalAlignment="Top" Width="60" FontWeight="Bold" FontSize="12"/>
+
+        <TextBox x:Name="stationDescriptionTextBox" Text="{Binding ElementName=stationListView, Path=SelectedItem.Description, Mode=TwoWay}" HorizontalAlignment="Left" Margin="101,353,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" RenderTransformOrigin="0.501,0.351"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="86" FontWeight="Bold" FontSize="12"/>
+
+        <!--Data buttons-->
+        <Button HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" Height="30" Width="82" Click="addDataToListBtn">
+            <DockPanel Width="42">
+                <TextBlock FontSize="12" FontWeight="Normal" HorizontalAlignment="Center">Add</TextBlock>
+                <Image Source="/Resources/Icons/Add_16x.png" Width="12" Margin="0,0,0,0" Height="12" />
+            </DockPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="97,387,0,0" VerticalAlignment="Top" Height="30" Width="82" Click="deleteDataFromListBtn">
+            <DockPanel>
+                <TextBlock FontSize="12" FontWeight="Normal">Delete</TextBlock>
+                <Image Source="/Resources/Icons/DeleteTableRow_16x.png" Width="12" Margin="5,0,0,0" Height="12" />
+            </DockPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="184,387,0,0" VerticalAlignment="Top" Height="30" Width="82" Click="updateDataFromListBtn">
+            <DockPanel>
+                <TextBlock FontSize="12" FontWeight="Normal" ContextMenuClosing="updateDataFromListBtn">Update</TextBlock>
+                <Image Source="/Resources/Icons/UpdateListItem_16x.png" Width="12" Margin="5,0,0,0" Height="12" />
+            </DockPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="271,387,0,0" VerticalAlignment="Top" Height="30" Width="82" Click="refreshBtn">
+           <DockPanel>
+                <TextBlock FontSize="12" FontWeight="Normal">Refresh</TextBlock>
+                <Image Source="/Resources/Icons/Restart_16x.png" Width="12" Margin="5,0,0,0" Height="12" />
+            </DockPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="360,387,0,0" VerticalAlignment="Top" Height="30" Width="82" Click="clearTextBoxesBtn">
+            <DockPanel ContextMenuClosing="clearTextBoxesBtn">
+                <TextBlock FontSize="12" FontWeight="Normal">Clear</TextBlock>
+                <Image Source="/Resources/Icons/CleanData_16x.png" Width="12" Margin="5,0,0,0" Height="12" />
+            </DockPanel>
+        </Button>
+
+        <!--Copy button-->
+        <Button HorizontalAlignment="Left" Margin="54,322,0,0" VerticalAlignment="Top" Height="26" Width="40" FontSize="10" Click="copyUrlBtn">
+            <StackPanel>
+                <TextBlock FontSize="12" FontWeight="Normal">Copy</TextBlock>
+            </StackPanel>
+        </Button>
+
+        <!--Music player buttons-->
+        <Button HorizontalAlignment="Left" Margin="272,352,0,0" VerticalAlignment="Top" Height="30" Width="82" Click="playStationBtn">
+            <DockPanel>
+                <TextBlock FontSize="12" FontWeight="Normal">Play</TextBlock>
+                <Image Source="/Resources/Icons/StartWithoutDebug_16x.png" Width="12" Margin="5,0,0,0" Height="12" />
+            </DockPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="360,352,0,0" VerticalAlignment="Top" Height="30" Width="82" Click="stopStationBtn">
+            <DockPanel>
+                <TextBlock FontSize="12" FontWeight="Normal">Stop</TextBlock>
+                <Image Source="/Resources/Icons/Stop_16x.png" Width="12" Margin="5,0,0,0" Height="12" />
+            </DockPanel>
+        </Button>
+
+        <!--Search buttons-->
+        <RadioButton x:Name="nameRadioButton" HorizontalAlignment="Left" Margin="534,264,0,0" VerticalAlignment="Top">
+            <StackPanel>
+                <Image/>
+                <TextBlock FontSize="12" FontWeight="Normal">Name</TextBlock>
+            </StackPanel>
+        </RadioButton>
+        <RadioButton x:Name="countryRadioButton" HorizontalAlignment="Left" Margin="611,264,0,0" VerticalAlignment="Top">
+            <StackPanel>
+                <Image/>
+                <TextBlock FontSize="12" FontWeight="Normal">Country</TextBlock>
+            </StackPanel>
+        </RadioButton>
+        <RadioButton x:Name="descriptionRadioButton" HorizontalAlignment="Left" Margin="690,264,0,0" VerticalAlignment="Top">
+            <StackPanel>
+                <Image/>
+                <TextBlock FontSize="12" FontWeight="Normal">Description</TextBlock>
+            </StackPanel>
+        </RadioButton>
+
+        <TextBox x:Name="searchTextBox" HorizontalAlignment="Left" Margin="534,291,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="26" KeyDown="searchTextBoxKeyDown"/>
+
+        <Button HorizontalAlignment="Left" Margin="669,291,0,0" VerticalAlignment="Top" Height="26"  Width="100" Click="searchStationFromListBtn">
+            <DockPanel>
+                <TextBlock FontSize="12" FontWeight="Normal">Search</TextBlock>
+                <Image Source="/Resources/Icons/VBSearch_16x.png" Width="12" Margin="5,0,0,0" Height="12" />
+            </DockPanel>
+        </Button>
+    </Grid>
+</Window>
